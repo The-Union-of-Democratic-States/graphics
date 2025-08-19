@@ -1,9 +1,9 @@
- backend:
+backend:
    name: github # or gitlab
    repo: The-Union-of-Democratic-States/graphics
    branch: main
    base_url: https://sveltia-cms-auth.jaybeanstalk.workers.dev/
-	collections:
+collections:
   - label: "Dispatch"
     name: "dispatch"
     folder: "_dispatch/"
