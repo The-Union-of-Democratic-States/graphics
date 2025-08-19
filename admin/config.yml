@@ -3,3 +3,13 @@
    repo: The-Union-of-Democratic-States/graphics
    branch: main
    base_url: https://sveltia-cms-auth.jaybeanstalk.workers.dev/
+	collections:
+  - label: "Dispatch"
+    name: "dispatch"
+    folder: "_dispatch/"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
