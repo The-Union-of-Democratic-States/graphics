@@ -12,11 +12,11 @@ collections:
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
-   - label: "Resolution"
-     name: "resolution"
-     folder: "_resolution/"
-     create: true
-     fields:
+  - label: "Resolution"
+    name: "resolution"
+    folder: "_resolution/"
+    create: true
+    fields:
         - {label: "Title", name: "title", widget: "string"}
         - {label: "Number", name: "number", widget: "string"}
         - {label: "Date Introduced", name: "date_introduced", widget: "datetime"}
@@ -24,20 +24,20 @@ collections:
         - {label: "Chamber", name: "chamber", widget: "select", options: ["Council of State","General Assembly"]
         - {label: "Author", name: "author", widget: "relation", multiple: true , collection: "citizen", value_field: "nation_name"}
         - {label: "Text", name: "text", widget: "markdown"}
-   - label: "Law"
-     name: "law"
-     folder: "_law/"
-     create: true
-     fields:
+  - label: "Law"
+    name: "law"
+    folder: "_law/"
+    create: true
+    fields:
         - {label: "Title", name: "title", widget: "string"}
         - {label: "Number", name: "number", widget: "string"}
         - {label: "Text", name: "text", widget: "markdown"}
         - {label: "Versions", name: "versions", widget: "relation", multiple: true , collection: "resolution", value_field: "title"}
-   - label: "Citizen"
-     name: "citizen"
-     folder: "_citizen/"
-     create: true
-     fields: 
+  - label: "Citizen"
+    name: "citizen"
+    folder: "_citizen/"
+    create: true
+    fields: 
        - {label: "Nation Name", name: "nation_name", widget: "string"}
        - {label: "World Assembly Status", name: "wa_status", widget: "select", options: ["Member", "Non-Nember"]}
   - label: "Order"
@@ -51,12 +51,11 @@ collections:
       - {label: "Title", name: "title", widget: "string:}
       - {label: "Author", name: "author", widget: "relation", multiple: true , collection: "citizen", value_field: "nation_name"}
       - {label: "Text", name: "text", widget: "markdown"}
-
-   - label: "Default"
-     name: "default"
-     folder: "_default/"
-     create: true
-     fields: 
+  - label: "Default"
+    name: "default"
+    folder: "_default/"
+    create: true
+    fields: 
         - label: "Sections"
           name: "sections"
           widget: "list"
@@ -64,11 +63,11 @@ collections:
            - {label: "Title", name: "title", widget: "string"
            - {label: "Text", name: "text", widget: "markdown"
         - {label: "Title", name: "title", widget: "string"}
-    - label: "Press Release"
-      name: "press_release"
-      folder: "_press_release/"
-      create: true
-      fields:
+  - label: "Press Release"
+    name: "press_release"
+    folder: "_press_release/"
+    create: true
+    fields:
          - {label: "Title", name: "title", widget: "string"}
          - {label: "Date Published", name: "date_published", widget: "datetime", optional: true}
          - {label: "Subtitle", name: "subtitle", widget: "string", optional: true}
