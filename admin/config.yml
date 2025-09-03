@@ -1,9 +1,11 @@
 backend:
-   name: github # or gitlab
-   repo: The-Union-of-Democratic-States/graphics
-   branch: main
-   base_url: https://sveltia-cms-auth.jaybeanstalk.workers.dev/
+  name: github
+  repo: The-Union-of-Democratic-States/graphics
+  branch: main
+  base_url: https://sveltia-cms-auth.jaybeanstalk.workers.dev/
+
 media_folder: "static/images/uploads"
+
 collections:
   - label: "Dispatch"
     name: "dispatch"
@@ -12,64 +14,69 @@ collections:
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
+
   - label: "Resolution"
     name: "resolution"
     folder: "_resolution/"
     create: true
     fields:
-        - {label: "Title", name: "title", widget: "string"}
-        - {label: "Number", name: "number", widget: "string"}
-        - {label: "Date Introduced", name: "date_introduced", widget: "datetime"}
-        - {label: "Date Final", name: "date_final", widget: "datetime", required: false}
-        - {label: "Chamber", name: "chamber", widget: "select", options: ["Council of State","General Assembly"]
-        - {label: "Author", name: "author", widget: "relation", multiple: true , collection: "citizen", value_field: "nation_name"}
-        - {label: "Text", name: "text", widget: "markdown"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Number", name: "number", widget: "string"}
+      - {label: "Date Introduced", name: "date_introduced", widget: "datetime"}
+      - {label: "Date Final", name: "date_final", widget: "datetime", required: false}
+      - {label: "Chamber", name: "chamber", widget: "select", options: ["Council of State", "General Assembly"]}
+      - {label: "Author", name: "author", widget: "relation", multiple: true, collection: "citizen", value_field: "nation_name", search_fields: ["nation_name"], display_fields: ["nation_name"]}
+      - {label: "Text", name: "text", widget: "markdown"}
+
   - label: "Law"
     name: "law"
     folder: "_law/"
     create: true
     fields:
-        - {label: "Title", name: "title", widget: "string"}
-        - {label: "Number", name: "number", widget: "string"}
-        - {label: "Text", name: "text", widget: "markdown"}
-        - {label: "Versions", name: "versions", widget: "relation", multiple: true , collection: "resolution", value_field: "title"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Number", name: "number", widget: "string"}
+      - {label: "Text", name: "text", widget: "markdown"}
+      - {label: "Versions", name: "versions", widget: "relation", multiple: true, collection: "resolution", value_field: "title", search_fields: ["title"], display_fields: ["title"]}
+
   - label: "Citizen"
     name: "citizen"
     folder: "_citizen/"
     create: true
-    fields: 
-       - {label: "Nation Name", name: "nation_name", widget: "string"}
-       - {label: "World Assembly Status", name: "wa_status", widget: "select", options: ["Member", "Non-Nember"]}
+    fields:
+      - {label: "Nation Name", name: "nation_name", widget: "string"}
+      - {label: "World Assembly Status", name: "wa_status", widget: "select", options: ["Member", "Non-Member"]} # Corrected typo "Non-Nember"
+
   - label: "Order"
     name: "order"
     folder: "_order/"
     create: true
-    fields: 
+    fields:
       - {label: "Office", name: "office", widget: "select", options: ["Presidency", "Chancery", "Governorate", "Delegacy"]}
       - {label: "Number", name: "number", widget: "string"}
       - {label: "Date Issued", name: "date_issued", widget: "datetime"}
-      - {label: "Title", name: "title", widget: "string:}
-      - {label: "Author", name: "author", widget: "relation", multiple: true , collection: "citizen", value_field: "nation_name"}
+      - {label: "Title", name: "title", widget: "string"} # Removed stray colon from "string:"
+      - {label: "Author", name: "author", widget: "relation", multiple: true, collection: "citizen", value_field: "nation_name", search_fields: ["nation_name"], display_fields: ["nation_name"]}
       - {label: "Text", name: "text", widget: "markdown"}
+
   - label: "Default"
     name: "default"
     folder: "_default/"
     create: true
-    fields: 
-        - label: "Sections"
-          name: "sections"
-          widget: "list"
-          fields: 
-           - {label: "Title", name: "title", widget: "string"
-           - {label: "Text", name: "text", widget: "markdown"
-        - {label: "Title", name: "title", widget: "string"}
+    fields:
+      - {label: "Title", name: "title", widget: "string"} # Moved this field up and removed the duplicate
+      - label: "Sections"
+        name: "sections"
+        widget: "list"
+        fields:
+          - {label: "Title", name: "title", widget: "string"} # Added missing closing brace }
+          - {label: "Text", name: "text", widget: "markdown"} # Added missing closing brace }
+
   - label: "Press Release"
     name: "press_release"
     folder: "_press_release/"
     create: true
     fields:
-         - {label: "Title", name: "title", widget: "string"}
-         - {label: "Date Published", name: "date_published", widget: "datetime", optional: true}
-         - {label: "Subtitle", name: "subtitle", widget: "string", optional: true}
-         - {label: "Office", name: "office", widget: "select", options: ["Ministry of Foreign Affairs", "Ministry of Defense"], optional: true}
-      
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date Published", name: "date_published", widget: "datetime", required: false} # Changed 'optional: true' to 'required: false'
+      - {label: "Subtitle", name: "subtitle", widget: "string", required: false} # Changed 'optional: true' to 'required: false'
+      - {label: "Office", name: "office", widget: "select", options: ["Ministry of Foreign Affairs", "Ministry of Defense"], required: false} # Changed 'optional: true' to 'required: false'
